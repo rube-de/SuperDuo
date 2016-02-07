@@ -22,16 +22,18 @@ import java.util.Date;
 import java.util.TimeZone;
 import java.util.Vector;
 
-import barqsoft.footballscores.DatabaseContract;
+import barqsoft.footballscores.data.DatabaseContract;
 import barqsoft.footballscores.R;
 
 /**
  * Created by yehya khaled on 3/2/2015.
  */
-public class myFetchService extends IntentService
+public class MyFetchService extends IntentService
 {
-    public static final String LOG_TAG = "myFetchService";
-    public myFetchService()
+    public static final String LOG_TAG = MyFetchService.class.getSimpleName();
+    public static final String ACTION_DATA_UPDATED = "barqsoft.footballscores.ACTION_DATA_UPDATED";
+
+    public MyFetchService()
     {
         super("myFetchService");
     }
@@ -265,13 +267,18 @@ public class myFetchService extends IntentService
             inserted_data = mContext.getContentResolver().bulkInsert(
                     DatabaseContract.BASE_CONTENT_URI,insert_data);
 
-            //Log.v(LOG_TAG,"Succesfully Inserted : " + String.valueOf(inserted_data));
+            Log.v(LOG_TAG, "Succesfully Inserted : " + String.valueOf(inserted_data));
         }
         catch (JSONException e)
         {
             Log.e(LOG_TAG,e.getMessage());
         }
 
+    }
+
+    private void updateWidgets() {
+        Intent dataUpdatedIntent = new Intent(ACTION_DATA_UPDATED).setPackage(getPackageName());
+        sendBroadcast(dataUpdatedIntent);
     }
 }
 

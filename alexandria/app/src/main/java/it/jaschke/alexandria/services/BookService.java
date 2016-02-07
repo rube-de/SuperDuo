@@ -128,6 +128,7 @@ public class BookService extends IntentService {
                 return;
             }
             bookJsonString = buffer.toString();
+            getBookDataFromJSON(bookJsonString, ean);
         } catch (Exception e) {
             Log.e(LOG_TAG, "Error ", e);
         } finally {
@@ -144,6 +145,10 @@ public class BookService extends IntentService {
 
         }
 
+
+    }
+
+    private void getBookDataFromJSON(String bookJsonString, String ean) {
         final String ITEMS = "items";
 
         final String VOLUME_INFO = "volumeInfo";
