@@ -1,5 +1,7 @@
 package barqsoft.footballscores;
 
+import android.content.res.Resources;
+
 /**
  * Created by yehya khaled on 3/3/2015.
  */
@@ -19,7 +21,8 @@ public class Utilies
             case CHAMPIONS_LEAGUE : return "UEFA Champions League";
             case PRIMERA_DIVISION : return "Primera Division";
             case BUNDESLIGA : return "Bundesliga";
-            default: return "Not known League Please report";
+            default:
+                return Resources.getSystem().getString(R.string.league_not_known_please_report);
         }
     }
     public static String getMatchDay(int match_day,int league_num)
@@ -28,28 +31,28 @@ public class Utilies
         {
             if (match_day <= 6)
             {
-                return "Group Stages, Matchday : 6";
+                return Resources.getSystem().getString(R.string.match_group_stage) + match_day;
             }
             else if(match_day == 7 || match_day == 8)
             {
-                return "First Knockout round";
+                return Resources.getSystem().getString(R.string.match_first_round);
             }
             else if(match_day == 9 || match_day == 10)
             {
-                return "QuarterFinal";
+                return Resources.getSystem().getString(R.string.match_quartet_final);
             }
             else if(match_day == 11 || match_day == 12)
             {
-                return "SemiFinal";
+                return Resources.getSystem().getString(R.string.match_semi_final);
             }
             else
             {
-                return "Final";
+                return Resources.getSystem().getString(R.string.match_day);
             }
         }
         else
         {
-            return "Matchday : " + String.valueOf(match_day);
+            return Resources.getSystem().getString(R.string.matchday) + String.valueOf(match_day);
         }
     }
 

@@ -46,4 +46,11 @@
     <string name="home_crest">Home team crest</string>
     <string name="away_crest">Away team crest</string>
     <string name="share_button">Share the match</string>
+    <string name="matchday">"Matchday : "</string>
+    <string name="match_day">Final</string>
+    <string name="match_semi_final">SemiFinal</string>
+    <string name="match_quartet_final">QuarterFinal</string>
+    <string name="match_first_round">First Knockout round</string>
+    <string name="match_group_stage">Group Stages, Matchday : </string>
+    <string name="league_not_known_please_report">Not known League Please report</string>
 </resources>
